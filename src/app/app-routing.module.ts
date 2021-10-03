@@ -6,9 +6,9 @@ import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
 
-  {path:'User',component:UserComponent}
+  {path:'',component:UserComponent}
 
-  
+
 ];
 
 @NgModule({

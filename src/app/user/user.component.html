@@ -25,4 +25,17 @@
         <button (click)="UserDataFun()" type="submit" value="button">REGISTER</button>
         <p><b>{{userdata}}</b></p>
     </form>
+
+    <form [formGroup]="LoginDetails" (ngSubmit)="LoginFunction()">
+        <label>
+            <input type="email" placeholder="email id" formControlName="email">
+        </label> <br>
+
+        <label>
+            <input type="password" placeholder="password" formControlName="password">
+        </label> <br>
+
+        <button (click)="LoginDataFun()" type="submit" value="button">LOGIN</button>
+      <p><b>{{loginuser}}</b></p>
+    </form>
 </body>

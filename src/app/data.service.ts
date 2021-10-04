@@ -13,6 +13,12 @@ import { FormGroup } from '@angular/forms';
   mobile : Number | undefined;
 }
 
+//LOGIN 
+export class loginuser {
+  email: string | undefined;
+  password : string | undefined;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -55,5 +61,16 @@ export class DataService {
     console.log(savedata,"SAVE USER DATA");
     return this.httpClient.post<user>(this.endPoint + '/api/user',JSON.stringify(savedata),this.httpHeader)
     }
+
+//LOGIN USER
+  LoginUser(data: FormGroup):Observable<loginuser> {
+
+    let logindata = {
+      "email":data.value.email,
+      "password":data.value.password
+    }
+    console.log(logindata,"LOGIN USER");
+    return this.httpClient.post<loginuser>(this.endPoint + '/api/LoginUser',JSON.stringify(logindata),this.httpHeader)
+  }
 
 }

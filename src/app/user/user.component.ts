@@ -17,6 +17,13 @@ export class UserComponent implements OnInit {
   })
   user: any;
   userdata: any;
+
+  LoginDetails = new FormGroup({
+    email : new FormControl(''),
+    password : new FormControl('')
+  })
+  login: any;
+  loginuser: any;
   constructor(private route : ActivatedRoute , private router : Router , private data : DataService ) { }
 
   ngOnInit() {
@@ -25,12 +32,25 @@ export class UserComponent implements OnInit {
   UserFunction(){
     console.log(this.userdetails.value);
   }
+  LoginFunction(){
+    console.log(this.LoginDetails.value);
+  }
+
+
 
   UserDataFun(){
     this.data.Addusers(this.userdetails).subscribe((data: {})=> {
       console.log(data);
       this.user = data;
       this.userdata = this.user.message;
+    })
+  }
+
+  LoginDataFun(){
+    this.data.LoginUser(this.LoginDetails).subscribe((data: {})=>{
+      console.log(data);
+      this.login =data;
+      this.loginuser = this.login.message;
     })
   }
 

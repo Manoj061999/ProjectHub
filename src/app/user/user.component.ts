@@ -46,12 +46,21 @@ export class UserComponent implements OnInit {
     })
   }
 
+ 
+
   LoginDataFun(){
     this.data.LoginUser(this.LoginDetails).subscribe((data: {})=>{
       console.log(data);
       this.login =data;
       this.loginuser = this.login.message;
+
+      //condition to another Application.component.ts
+      if(this.loginuser=="Logined Successfully"){
+        this.router.navigate(['application']);
+      }else{
+        this.loginuser
+        //console.log(this.loginuser);
+      }
     })
   }
-
 }
